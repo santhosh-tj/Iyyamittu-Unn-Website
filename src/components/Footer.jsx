@@ -17,11 +17,11 @@ const Footer = () => {
             <p className="max-w-md mb-8 leading-relaxed">
               An innovative platform dedicated to reducing global food waste by connecting donors with local NGOs through real-time technology.
             </p>
-            <div className="flex gap-4">
+            {/* <div className="flex gap-4">
               <a href="#" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all"><Github className="w-5 h-5" /></a>
               <a href="#" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all"><Twitter className="w-5 h-5" /></a>
               <a href="#" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all"><Mail className="w-5 h-5" /></a>
-            </div>
+            </div> */}
           </div>
 
         </div>
