@@ -2,8 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, Smartphone } from 'lucide-react';
 import mockup from '../assets/mockup.png';
+import DownloadComingSoon from './DownloadComingSoon';
 
 const DownloadCTA = () => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
   return (
     <section className="section-padding bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -23,13 +26,16 @@ const DownloadCTA = () => {
               </p>
               
               <div className="space-y-6">
-                <button className="w-full sm:w-auto px-10 py-5 bg-white text-primary-900 rounded-2xl font-bold text-xl flex items-center justify-center gap-3 hover:bg-primary-50 transition-colors shadow-2xl">
+                <button 
+                  onClick={() => setIsModalOpen(true)}
+                  className="w-full sm:w-auto px-10 py-5 bg-white text-primary-900 rounded-2xl font-bold text-xl flex items-center justify-center gap-3 hover:bg-primary-50 transition-colors shadow-2xl"
+                >
                   <Download className="w-6 h-6" />
                   Download APK
                 </button>
                 <div className="flex items-center gap-4 text-white/60 text-sm px-2">
                   <Smartphone className="w-4 h-4" />
-                  <span>Version 1.0.2 • 28MB • Android 8.0+</span>
+                  <span>Version 1.0.0 • 65MB • Android 11.0+</span>
                 </div>
               </div>
             </motion.div>
@@ -49,6 +55,7 @@ const DownloadCTA = () => {
           </div>
         </div>
       </div>
+      <DownloadComingSoon isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

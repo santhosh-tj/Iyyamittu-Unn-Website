@@ -2,8 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Play, Download } from 'lucide-react';
 import mockup from '../assets/mockup.png';
+import ComingSoon from './ComingSoon';
+import DownloadComingSoon from './DownloadComingSoon';
 
 const Hero = () => {
+  const [isDemoModalOpen, setIsDemoModalOpen] = React.useState(false);
+  const [isAppModalOpen, setIsAppModalOpen] = React.useState(false);
+
   return (
     <section className="relative min-h-screen flex items-center section-padding pt-32 overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-mint-50">
       {/* Background Shapes */}
@@ -27,11 +32,17 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="btn-primary flex items-center justify-center gap-2 group">
+            <button 
+              onClick={() => setIsAppModalOpen(true)}
+              className="btn-primary flex items-center justify-center gap-2 group"
+            >
               <Download className="w-5 h-5 group-hover:animate-bounce" />
               Download APK
             </button>
-            <button className="btn-secondary flex items-center justify-center gap-2">
+            <button 
+              onClick={() => setIsDemoModalOpen(true)}
+              className="btn-secondary flex items-center justify-center gap-2"
+            >
               <Play className="w-5 h-5 fill-primary-600" />
               Watch Demo
             </button>
@@ -78,6 +89,8 @@ const Hero = () => {
           </motion.div>
         </motion.div>
       </div>
+      <ComingSoon isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
+      <DownloadComingSoon isOpen={isAppModalOpen} onClose={() => setIsAppModalOpen(false)} />
     </section>
   );
 };

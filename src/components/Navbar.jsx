@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Leaf, Menu, X } from 'lucide-react';
 import logo from '../assets/logo.png';
+import DownloadComingSoon from './DownloadComingSoon';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAppModalOpen, setIsAppModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +42,10 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <button className="bg-primary-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-primary-700 transition-all">
+          <button 
+            onClick={() => setIsAppModalOpen(true)}
+            className="bg-primary-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-primary-700 transition-all"
+          >
             Download App
           </button>
         </div>
@@ -50,6 +55,8 @@ const Navbar = () => {
           {isMobileMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
+
+      <DownloadComingSoon isOpen={isAppModalOpen} onClose={() => setIsAppModalOpen(false)} />
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
@@ -64,7 +71,15 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <button className="btn-primary w-full">Download App</button>
+          <button 
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              setIsAppModalOpen(true);
+            }}
+            className="btn-primary w-full"
+          >
+            Download App
+          </button>
         </div>
       )}
     </nav>
